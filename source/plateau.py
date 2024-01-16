@@ -357,7 +357,14 @@ def case_vide(plateau):
     Returns:
         (int,int): la position choisie
     """
-    pass
+    continue_find = True
+    while continue_find is True :
+        random_ligne = random.randint(0,get_nb_lignes(plateau) - 1)
+        random_colonne= random.randint(0,get_nb_colonnes(plateau) - 1)
+        if case.est_mur(plateau[random_ligne, random_colonne]) is False :
+            if case.get_objet(plateau[random_ligne, random_colonne]) == " " and case.get_nb_fantomes(plateau[random_ligne, random_colonne]) == 0 and case.get_nb_pacmans(plateau[random_ligne, random_colonne]) == 1:
+                continue_find = False
+    return (random_ligne, random_colonne)
 
 
 def directions_possibles(plateau,pos,passemuraille=False):
